@@ -1,3 +1,10 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap');
+
+
+*{
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +12,118 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Work Sans', sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+nav ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
+  background-color: ghostwhite;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05)!important;
+  margin: 0;
+  align-items: center;
+}
+nav ul li{
+  font-size: large;
+  font-family: cursive;
+  font-weight: 500;
+
+}
+.nav-link{
+  text-decoration: none;
+  color: #1B1212;
+  padding: 15px;
+}
+
+.nav-link-active {
+  font-weight: bold;
+  background-color: darkseagreen;
+  color: white;
+  padding: 30px 15px;
+  border: 3px inset;
+}
+
+.post-container {
+  padding: 10px;
+  display: flex;
+  width: 95%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: 30px 2.5%;
+}
+.post-container .vote{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.vote .up-vote{
+  border: none;
+  background-color: aliceblue;
+  padding: 15px 10px;
+  font-size: 16px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  border: 1px outset #c9e6ff9c;
+  border-radius: 5px;
+}
+
+.vote .down-vote{
+  border: none;
+  background-color: aliceblue;
+  padding: 15px 10px;
+  font-size: 16px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  border: 1px outset #c9e6ff9c;
+  border-radius: 5px;
+}
+
+#loading{
+  font-size: x-large;
+  text-align: center;
+}
+
+.post-container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.post-info img{
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.post-info h2{
+  color: #1B1212;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+#search-input{
+  padding: 10px 20px;
+  font-size: 17px;
+  margin-right: 5px;
+  font-family: 'Work Sans', sans-serif;
+  border: 1px solid;
+  border-color: lavender;
+}
+
+#loading-popular{
+  text-align: center;
+}
+#search-btn{
+  background-color: transparent;
+  border: none;
+}
+#search-icon{
+  font-size: 20px;
 }
