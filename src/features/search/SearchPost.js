@@ -21,6 +21,7 @@ export default function HomePost({ posts }) {
         title={post.title}
         description={post.description}
         image={post.image}
+        author={post.author}
       /> )
     )
   )
