@@ -1,4 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+import { formateData } from "../../util/util";
+export const loadPosts = createAsyncThunk(
+    'posts/loadPosts',
+    async (searchTerm,thunkAPI) =>{
+      const response = await fetch(`https://www.reddit.com/search.json?q=${searchTerm}`)
+      const json = await response.json();
+      return formateData(json);
+    }
+  )
 
 const searchPosts = createSlice({
     name: "searchPosts",
@@ -6,7 +15,9 @@ const searchPosts = createSlice({
         searchPosts: {
 
         },
-        searchTerm: ""
+        searchTerm: "",
+        isLoadingPosts: true,
+        failedToLoadPosts: false,
     },
 
     reducers:{
@@ -23,6 +34,22 @@ const searchPosts = createSlice({
         downVote: (state, action) =>{
             const index = action.payload;
             state.searchPosts[index].upvotes -= 1;
+        },
+        
+    },
+    extraReducers: {
+        [loadPosts.pending]: (state,action) =>{
+            state.isLoadingPosts = true;
+            state.failedToLoadPosts = false;
+        },
+        [loadPosts.fulfilled]: (state,action) =>{
+            state.searchPosts = action.payload;
+            state.isLoadingPosts = false;
+            state.failedToLoadPosts = false;   
+        },
+        [loadPosts.rejected]: (state,action) =>{
+            state.isLoadingPosts = false;
+            state.failedToLoadPosts = true;
         }
     }
 })
@@ -30,4 +57,5 @@ const searchPosts = createSlice({
 export const { addPosts,addSearchTerm,upVote,downVote } = searchPosts.actions;
 export const selectSearchPosts = (state) => state.searchPosts.searchPosts;
 export const selectSearchTerm = (state) => state.searchPosts.searchTerm;
+export const isLoadingPosts = (state) => state.searchPosts.isLoadingPosts;
 export default searchPosts.reducer;

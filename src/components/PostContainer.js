@@ -1,6 +1,6 @@
 import { useState } from "react"
 // make the homepage a list of subreddits
-export default function PostContainer({ index, upVoteHandler, upvotes, downvotes, voteRatio, title, description, image, author }) {
+export default function PostContainer({ index, upVoteHandler,downVoteHandler, upvotes, downvotes, voteRatio, title, description, image, author }) {
 
   const [upClicked, setUpClicked] = useState(false)
   const [downClicked, setDownClicked] = useState(false)
@@ -29,12 +29,14 @@ export default function PostContainer({ index, upVoteHandler, upvotes, downvotes
       setDownColor("antiquewhite");
       setDownClicked(true);
       setUpClicked(false);
+      downVoteHandler(index);
     }
     else if (upClicked && !downClicked) {
       setDownColor("antiquewhite");
       setUpColor("aliceblue");
       setDownClicked(true);
       setUpClicked(false);
+      downVoteHandler(index);
     }
   }
 

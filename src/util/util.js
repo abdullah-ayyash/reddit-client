@@ -1,7 +1,6 @@
 
 export const formateData = (data) => {
     const posts = data.data.children.slice(0, 20).map(child => {
-        console.log(child)
         const { title, selftext, ups, downs, upvote_ratio, author } = child.data;
         let { url } = child.data;
 
