@@ -1,27 +1,34 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { selectSearchPosts } from "./searchSlice";
-import { selectSearchTerm } from "./searchSlice";
-import { loadPosts,isLoadingPosts } from "./searchSlice";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSearchTerm, loadPosts } from "./searchSlice";
 import SearchPost from "./SearchPost";
-
 
 export default function SearchPage() {
   const dispatch = useDispatch();
-  const searchPosts = useSelector(selectSearchPosts);
+  const searchPosts = useSelector((state) => state.searchPosts.searchPosts);
   const searchTerm = useSelector(selectSearchTerm);
-  const isLoading = useSelector(isLoadingPosts);
+  const isLoading = useSelector((state) => state.searchPosts.isLoadingPosts);
+
   useEffect(() => {
     dispatch(loadPosts(searchTerm));
-  }, [searchTerm])
+  }, [searchTerm]);
 
+  if (isLoading) {
+    console.log('Started loading: ' + isLoading)
+    return (
+      <section>
+        <h3 id="loading">Loading......</h3>
+      </section>
+    );
+  }
 
-  return (
-    <section>
-      {isLoading ? (
-        <h3 id="loading">Loading......</h3>) :
+  if (searchPosts.length > 0) {
+    return (
+      <section>
         <SearchPost posts={searchPosts} />
-      }
-    </section>
-  )
+      </section>
+    );
+  } else {
+    return null;
+  }
 }

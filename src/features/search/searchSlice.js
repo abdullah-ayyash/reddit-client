@@ -12,11 +12,9 @@ export const loadPosts = createAsyncThunk(
 const searchPosts = createSlice({
     name: "searchPosts",
     initialState: {
-        searchPosts: {
-
-        },
+        searchPosts: [],
         searchTerm: "",
-        isLoadingPosts: true,
+        isLoadingPosts: false,
         failedToLoadPosts: false,
     },
 
@@ -55,7 +53,5 @@ const searchPosts = createSlice({
 })
 
 export const { addPosts,addSearchTerm,upVote,downVote } = searchPosts.actions;
-export const selectSearchPosts = (state) => state.searchPosts.searchPosts;
 export const selectSearchTerm = (state) => state.searchPosts.searchTerm;
-export const isLoadingPosts = (state) => state.searchPosts.isLoadingPosts;
 export default searchPosts.reducer;

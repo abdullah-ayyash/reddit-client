@@ -111,8 +111,14 @@ nav ul li{
   text-align: center;
 }
 
+
+
 .post-container:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.post-content{
+  width: 100%;
 }
 
 .post-content img{
@@ -126,6 +132,11 @@ nav ul li{
   font-size: 21px;
   font-weight: 500;
 }
+.post-content p{
+  max-width: 95%;
+  width: 100%;
+}
+
 
 #search-input{
   padding: 10px 20px;
