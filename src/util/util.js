@@ -1,7 +1,7 @@
 
 export const formateData = (data) => {
     const posts = data.data.children.slice(0, 20).map(child => {
-        const { title, selftext, ups, downs, upvote_ratio, author,created } = child.data;
+        const { title, selftext, ups, downs, upvote_ratio, author,created, id } = child.data;
         let { url } = child.data;
 
         const check = url.match("i.redd.it");
@@ -18,7 +18,8 @@ export const formateData = (data) => {
             downvotes: downs,
             voteRatio: upvote_ratio,
             author: author,
-            publishDate: publishDate
+            publishDate: publishDate,
+            id: id
         };
     });
     return posts;
@@ -42,3 +43,21 @@ const formatTimestamp = (timestamp) => {
       return `${days} day${days > 1 ? 's' : ''} ago`;
     }
   }
+
+  export const formateComments = (json) =>{
+    const comments = json[1].data.children.slice(0, 10).map((comment) => {
+      // Access the comment data and format it accordingly
+      const commentData = comment.data;
+      const formattedComment = {
+        id: commentData.id,
+        text: commentData.body,
+        author: commentData.author,
+        createdAt: formatTimestamp(commentData.created_utc),
+      };
+
+      // Return the formatted comment
+      return formattedComment;
+    });
+    return comments;
+  }
+

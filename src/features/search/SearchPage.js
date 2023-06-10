@@ -14,7 +14,6 @@ export default function SearchPage() {
   }, [searchTerm]);
 
   if (isLoading) {
-    console.log('Started loading: ' + isLoading)
     return (
       <section>
         <h3 id="loading">Loading......</h3>
@@ -23,7 +22,6 @@ export default function SearchPage() {
   }
 
   if (searchPosts.length > 0) {
-    console.log('Finished Loading loading: ' + isLoading)
     return (
       <section>
         <SearchPost posts={searchPosts} />

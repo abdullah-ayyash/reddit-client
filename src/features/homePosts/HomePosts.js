@@ -11,7 +11,7 @@ export default function HomePosts() {
   const dispatch = useDispatch();
   const selectedPosts = useSelector(selectHomePosts)
   useEffect(() => {
-    fetch('https://www.reddit.com/new.json')
+    fetch('https://www.reddit.com/r/popular.json')
       .then(response => response.json())
       .then(data => {
         // Process the response data

@@ -1,5 +1,5 @@
 import PostContainer from "../../components/PostContainer"
-import { upVote } from "./homeSlice"
+import { upVote,downVote } from "./homeSlice"
 import { useDispatch } from "react-redux"
 
 export default function HomePost({ posts }) {
@@ -8,10 +8,15 @@ export default function HomePost({ posts }) {
   const upVoteHandler = (index) => {
     dispatch(upVote(index))
   }
+  const downVoteHandler = (index) => {
+    dispatch(downVote(index))
+  }
+
   return(
   posts.map((post, index) => (
       <PostContainer
         upVoteHandler={upVoteHandler}
+        downVoteHandler={downVoteHandler}
         key={index}
         index={index}
         upvotes={post.upvotes}
@@ -22,6 +27,7 @@ export default function HomePost({ posts }) {
         image={post.image}
         author={post.author}
         publishDate= {post.publishDate}
+        id={post.id}
       /> )
     )
   )
