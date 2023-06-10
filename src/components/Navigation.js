@@ -27,6 +27,13 @@ const Navigation = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/sub-reddits" 
+                    className={({isActive}) => isActive ? "nav-link-active": "nav-link" }
+                    >
+                        Sub-Reddits
+                    </NavLink>
+                </li>
+                <li>
                     <SearchBar />
                 </li>
             </ul>

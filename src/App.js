@@ -18,6 +18,7 @@ function App() {
         <Route path='/search-page' element={<SearchPage />}>
 
         </Route>
+
         <Route path='/' element={<HomePosts />} >
         </Route>
         

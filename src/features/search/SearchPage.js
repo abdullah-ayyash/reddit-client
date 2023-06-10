@@ -23,6 +23,7 @@ export default function SearchPage() {
   }
 
   if (searchPosts.length > 0) {
+    console.log('Finished Loading loading: ' + isLoading)
     return (
       <section>
         <SearchPost posts={searchPosts} />

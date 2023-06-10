@@ -1,6 +1,6 @@
 import { useState } from "react"
 // make the homepage a list of subreddits
-export default function PostContainer({ index, upVoteHandler,downVoteHandler, upvotes, downvotes, voteRatio, title, description, image, author }) {
+export default function PostContainer({ index, upVoteHandler,downVoteHandler, upvotes, downvotes, voteRatio, title, description, image, author,publishDate }) {
 
   const [upClicked, setUpClicked] = useState(false)
   const [downClicked, setDownClicked] = useState(false)
@@ -39,7 +39,6 @@ export default function PostContainer({ index, upVoteHandler,downVoteHandler, up
       downVoteHandler(index);
     }
   }
-
   return (
     <div className="post-container">
       <div className="post-bones">
@@ -67,7 +66,8 @@ export default function PostContainer({ index, upVoteHandler,downVoteHandler, up
       </section>
       </div>
       <section className="post-info">
-        <h4>{author ? `@${author}` : "@abdullah_ayyash"}</h4>
+        <h4 className="author">{author ? `@${author}` : "@abdullah_ayyash"}</h4>
+        <h4 className="date">{publishDate}</h4>
       </section>
     </div>
   )
