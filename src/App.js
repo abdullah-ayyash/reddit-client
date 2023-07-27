@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import HomePosts from './features/homePosts/HomePosts';
-import { Routes } from 'react-router-dom';
 import Popular from './features/popular/Popular'
 import SearchPage from './features/search/SearchPage';
 
